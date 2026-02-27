@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสำรวจการใช้ช่องทาง SMS และอีเมล</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');        
+        body { font-family: 'Taviraj', serif; }
+    </style>
+</head>
+<body class="bg-gray-50 py-10 px-4 min-h-screen">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+        <img src="Banner-1.png" alt="Banner แบบสำรวจ" class="w-full h-auto max-h-64 sm:max-h-80 object-cover object-center">
+        <div class="bg-[#0d1b2a] text-white p-8 border-b-8 border-[#f97316]">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">แบบสำรวจการใช้ช่องทาง SMS และอีเมล</h1>
+            <p class="text-gray-300 text-base leading-relaxed">เพื่อรวบรวมข้อมูลแนวทางการสื่อสารของหน่วยงานในการนำมาพิจารณากำหนดแนวทางการสื่อสารประชาสัมพันธ์ และป้องกันอาชญากรรมทางเทคโนโลยี</p>
+        </div>
+
+        <form id="surveyForm" class="p-8 space-y-10">
+            
+            <section>
+                <h2 class="text-xl font-bold text-[#0d1b2a] mb-6 border-l-4 border-[#f97316] pl-3 bg-gray-100 py-2 rounded-r-lg">ส่วนที่ 1: ข้อมูลทั่วไป</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 px-2">
+                    <div class="md:col-span-2">
+                        <label class="block text-base font-semibold mb-1">ชื่อหน่วยงาน <span class="text-red-500">*</span></label>
+                        <input type="text" name="agencyName" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f97316] outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-base font-semibold mb-1">สังกัดส่วนงาน <span class="text-red-500">*</span></label>
+                        <select name="department" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f97316] outline-none bg-white">
+                            <option value="">-- โปรดเลือกสังกัด --</option>
+                            <option value="สำนักงานราชวิทยาลัยจุฬาภรณ์">สำนักงานราชวิทยาลัยจุฬาภรณ์</option>
+                            <option value="วิทยาลัยวิทยาศาสตร์การแพทย์เจ้าฟ้าจุฬาภรณ์">วิทยาลัยวิทยาศาสตร์การแพทย์เจ้าฟ้าจุฬาภรณ์</option>
+                            <option value="โรงพยาบาลจุฬาภรณ์">โรงพยาบาลจุฬาภรณ์</option>
+                            <option value="คณะแพทยศาสตร์ศรีสวางควัฒน">คณะแพทยศาสตร์ศรีสวางควัฒน</option>
+                            <option value="คณะพยาบาลศาสตร์อัครราชกุมารี">คณะพยาบาลศาสตร์อัครราชกุมารี</option>
+                            <option value="คณะเทคโนโลยีวิทยาศาสตร์สุขภาพ">คณะเทคโนโลยีวิทยาศาสตร์สุขภาพ</option>
+                            <option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+                            <option value="คณะนวัตกรรมอาหารและโภชนาการ">คณะนวัตกรรมอาหารและโภชนาการ</option>
+                            <option value="คณะวิศวกรรมศาสตร์">คณะวิศวกรรมศาสตร์</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-base font-semibold mb-1">ชื่อ-นามสกุล ผู้ประสานงาน <span class="text-red-500">*</span></label>
+                        <input type="text" name="coordinatorName" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f97316] outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-base font-semibold mb-1">เบอร์โทรศัพท์ติดต่อ <span class="text-red-500">*</span></label>
+                        <input type="tel" name="phone" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f97316] outline-none">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-[#0d1b2a] mb-6 border-l-4 border-[#f97316] pl-3 bg-gray-100 py-2 rounded-r-lg">ส่วนที่ 2: สถานะการใช้งานการส่งข้อความสั้น (SMS) ถึงประชาชน</h2>
+                <div class="space-y-6 px-2">
+                    <div>
+                        <label class="block text-base font-semibold mb-3">2.1 ปัจจุบันหน่วยงานของท่านมีการส่งข้อความสั้น (SMS) ถึงประชาชนหรือไม่?</label>
+                        <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsUsage" value="มีการใช้งาน" class="mr-2 w-4 h-4 text-[#f97316]"> มีการใช้งาน</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsUsage" value="ไม่มีการใช้งาน" class="mr-2 w-4 h-4 text-[#f97316]"> ไม่มีการใช้งาน</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                        <label class="block text-base font-semibold mb-3 text-orange-900">2.2 กรณีมีการใช้งานส่ง SMS วัตถุประสงค์หลักคืออะไร (เลือกได้มากกว่า 1 ข้อ)</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="smsObjective" value="แจ้งเตือนนัดหมาย" class="mr-2 w-4 h-4 text-[#f97316] rounded"> แจ้งเตือนนัดหมาย</label>
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="smsObjective" value="แจ้งเตือนบริการด้านต่าง ๆ" class="mr-2 w-4 h-4 text-[#f97316] rounded"> แจ้งเตือนบริการด้านต่าง ๆ</label>
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="smsObjective" value="แจ้งค่าบริการและช่องทางการชำระเงิน" class="mr-2 w-4 h-4 text-[#f97316] rounded"> แจ้งค่าบริการและช่องทางการชำระเงิน</label>
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="smsObjective" value="ประชาสัมพันธ์ข่าวสาร / กิจกรรม" class="mr-2 w-4 h-4 text-[#f97316] rounded"> ประชาสัมพันธ์ข่าวสาร / กิจกรรม</label>
+                            <div class="flex items-center mt-1">
+                                <input type="checkbox" name="smsObjective" value="อื่นๆ" class="mr-2 w-4 h-4 text-[#f97316] rounded"> 
+                                <span class="mr-2 text-base">อื่น ๆ โปรดระบุ:</span>
+                                <input type="text" name="smsObjectiveOther" class="flex-1 p-1 border-b border-gray-400 bg-transparent outline-none focus:border-[#f97316] text-base">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-base font-semibold mb-3">2.3 ในการส่ง SMS หน่วยงานของท่านมีการแนบลิงก์ (URL) เพื่อให้กรอกข้อมูลหรือดูข้อมูลหรือไม่?</label>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsLink" value="มี" class="mr-2 w-4 h-4 text-[#f97316]"> มี</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsLink" value="ไม่มี" class="mr-2 w-4 h-4 text-[#f97316]"> ไม่มี</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-base font-semibold mb-3">2.4 การรับบริการส่ง SMS ของหน่วยงานท่าน</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsService" value="ส่งผ่านระบบส่วนกลางของโอเปอร์เรเตอร์" class="mr-2 w-4 h-4 text-[#f97316]"> ส่ง SMS ผ่านระบบส่วนกลางของโอเปอร์เรเตอร์ งานประสานงานบริการ Call Center</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="smsService" value="ใช้ระบบของหน่วยงานเอง" class="mr-2 w-4 h-4 text-[#f97316]"> ส่ง SMS โดยใช้ระบบของหน่วยงานเอง</label>
+                            <div class="flex items-center mt-1">
+                                <input type="radio" name="smsService" value="อื่นๆ" class="mr-2 w-4 h-4 text-[#f97316]"> 
+                                <span class="mr-2 text-base">อื่น ๆ โปรดระบุ:</span>
+                                <input type="text" name="smsServiceOther" class="flex-1 p-1 border-b border-gray-400 outline-none focus:border-[#f97316] text-base">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-[#0d1b2a] mb-6 border-l-4 border-[#f97316] pl-3 bg-gray-100 py-2 rounded-r-lg">ส่วนที่ 3: สถานะการใช้งานช่องทางอีเมล (Email) ถึงประชาชน</h2>
+                <div class="space-y-6 px-2">
+                    <div>
+                        <label class="block text-base font-semibold mb-3">3.1 ปัจจุบันหน่วยงานของท่านมีการส่ง อีเมล (Email) ถึงประชาชนหรือไม่?</label>
+                        <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="emailUsage" value="มีการใช้งาน" class="mr-2 w-4 h-4 text-[#f97316]"> มีการใช้งาน</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="emailUsage" value="ไม่มีการใช้งาน" class="mr-2 w-4 h-4 text-[#f97316]"> ไม่มีการใช้งาน</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <label class="block text-base font-semibold mb-3 text-blue-900">3.2 กรณีมีการส่งอีเมล วัตถุประสงค์หลักคืออะไร (เลือกได้มากกว่า 1 ข้อ)</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="emailObjective" value="ส่งเอกสาร/ใบแจ้งหนี้/ใบเสร็จรับเงิน" class="mr-2 w-4 h-4 text-[#f97316] rounded"> ส่งเอกสาร/ใบแจ้งหนี้/ใบเสร็จรับเงิน</label>
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="emailObjective" value="แจ้งผลการพิจารณา / อนุมัติ" class="mr-2 w-4 h-4 text-[#f97316] rounded"> แจ้งผลการพิจารณา / อนุมัติ</label>
+                            <label class="flex items-center cursor-pointer"><input type="checkbox" name="emailObjective" value="ประชาสัมพันธ์ข่าวสาร" class="mr-2 w-4 h-4 text-[#f97316] rounded"> ประชาสัมพันธ์ข่าวสาร</label>
+                            <div class="flex items-center mt-1">
+                                <input type="checkbox" name="emailObjective" value="อื่นๆ" class="mr-2 w-4 h-4 text-[#f97316] rounded"> 
+                                <span class="mr-2 text-base">อื่น ๆ โปรดระบุ:</span>
+                                <input type="text" name="emailObjectiveOther" class="flex-1 p-1 border-b border-gray-400 bg-transparent outline-none focus:border-[#f97316] text-base">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-base font-semibold mb-3">3.3 ในการส่งอีเมลหน่วยงานของท่านมีการแนบลิงก์เพื่อให้กรอกข้อมูลหรือดาวน์โหลดโปรแกรมหรือไม่?</label>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="emailLink" value="มี" class="mr-2 w-4 h-4 text-[#f97316]"> มี</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="emailLink" value="ไม่มี" class="mr-2 w-4 h-4 text-[#f97316]"> ไม่มี</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-[#0d1b2a] mb-6 border-l-4 border-[#f97316] pl-3 bg-gray-100 py-2 rounded-r-lg">ส่วนที่ 4: ผลกระทบและข้อเสนอแนะ</h2>
+                <div class="space-y-6 px-2">
+                    <div>
+                        <label class="block text-base font-semibold mb-3">4.1 หากมีนโยบายให้ <u class="text-red-600">ยกเลิกการแนบลิงก์</u> ในการส่ง SMS หรือ อีเมล ทุกกรณี หน่วยงานของท่านจะได้รับผลกระทบหรือไม่ อย่างไร?</label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="impactDetail" value="ไม่ได้รับผลกระทบ" class="mr-2 w-4 h-4 text-[#f97316]"> ไม่ได้รับผลกระทบ</label>
+                            <div class="flex items-center mt-1">
+                                <input type="radio" name="impactDetail" value="อื่นๆ" class="mr-2 w-4 h-4 text-[#f97316]"> 
+                                <span class="mr-2 text-base">ได้รับผลกระทบ(โปรดระบุ):</span>
+                                <input type="text" name="smsServiceOther" class="flex-1 p-1 border-b border-gray-400 outline-none focus:border-[#f97316] text-base">
+                            </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-base font-semibold mb-3">4.2 ข้อเสนอแนะอื่น ๆ เกี่ยวกับการปรับปรุงรูปแบบการสื่อสารให้ปลอดภัย</label>
+                        <textarea name="suggestion" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f97316] outline-none resize-none" placeholder="ข้อเสนอแนะเพิ่มเติม..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-center pt-8 border-t border-gray-200">
+                <button type="submit" id="submitBtn" class="bg-[#f97316] hover:bg-[#e06310] text-white font-bold py-3 px-12 rounded-full shadow-md transition duration-300 text-lg w-full md:w-auto">
+                    ส่งข้อมูลแบบสำรวจ
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); 
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = 'กำลังส่งข้อมูล...';
+            submitBtn.disabled = true;
+
+            // ⚠️ วาง URL ของ Google Apps Script ที่นี่
+            const scriptUrl = 'https://script.google.com/a/macros/pccms.ac.th/s/AKfycbw1fhQzK1G6e0tFA63Nt9gH8FeYl4_pbatHRWe9yWNs6h_nEC9aKrayPF17Ip7r_Hq1vA/exec';
+
+            const formData = new FormData(this);
+
+            // จัดการข้อมูล Checkbox ที่มีช่อง "อื่นๆ" สำหรับ SMS
+            let smsObjectives = formData.getAll('smsObjective');
+            if (smsObjectives.includes('อื่นๆ')) {
+                const otherText = formData.get('smsObjectiveOther');
+                smsObjectives = smsObjectives.map(obj => obj === 'อื่นๆ' ? `อื่นๆ (${otherText})` : obj);
+            }
+
+            // จัดการข้อมูล Checkbox ที่มีช่อง "อื่นๆ" สำหรับ Email
+            let emailObjectives = formData.getAll('emailObjective');
+            if (emailObjectives.includes('อื่นๆ')) {
+                const otherText = formData.get('emailObjectiveOther');
+                emailObjectives = emailObjectives.map(obj => obj === 'อื่นๆ' ? `อื่นๆ (${otherText})` : obj);
+            }
+
+            // จัดการ Radio ที่มีช่อง "อื่นๆ" สำหรับ SMS Service
+            let smsServiceVal = formData.get('smsService');
+            if (smsServiceVal === 'อื่นๆ') {
+                smsServiceVal = `อื่นๆ (${formData.get('smsServiceOther')})`;
+            }
+
+            // เตรียมข้อมูลส่งออก
+            const data = {
+                agencyName: formData.get('agencyName') || '',
+                department: formData.get('department') || '',
+                coordinatorName: formData.get('coordinatorName') || '',
+                phone: formData.get('phone') || '',
+                smsUsage: formData.get('smsUsage') || '',
+                smsObjective: smsObjectives, 
+                smsLink: formData.get('smsLink') || '',
+                smsService: smsServiceVal || '',
+                emailUsage: formData.get('emailUsage') || '',
+                emailObjective: emailObjectives,
+                emailLink: formData.get('emailLink') || '',
+                impactDetail: formData.get('impactDetail') || '',
+                suggestion: formData.get('suggestion') || ''
+            };
+
+            try {
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    alert('ส่งแบบสอบถามเรียบร้อยแล้ว ขอบคุณที่ให้ความร่วมมือครับ!');
+                    this.reset(); 
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + result.message);
+                }
+            } catch (error) {
+                alert('ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่');
+                console.error(error);
+            } finally {
+                submitBtn.innerText = 'ส่งข้อมูลแบบสำรวจ';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
