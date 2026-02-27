@@ -147,7 +147,7 @@
                             <div class="flex items-center mt-1">
                                 <input type="radio" name="impactDetail" value="อื่นๆ" class="mr-2 w-4 h-4 text-[#f97316]"> 
                                 <span class="mr-2 text-base">ได้รับผลกระทบ(โปรดระบุ):</span>
-                                <input type="text" name="smsServiceOther" class="flex-1 p-1 border-b border-gray-400 outline-none focus:border-[#f97316] text-base">
+                                <input type="text" name="impactDetailOther" class="flex-1 p-1 border-b border-gray-400 outline-none focus:border-[#f97316] text-base">
                             </div>
                     </div>
 
@@ -179,27 +179,29 @@
 
             const formData = new FormData(this);
 
-            // จัดการข้อมูล Checkbox ที่มีช่อง "อื่นๆ" สำหรับ SMS
             let smsObjectives = formData.getAll('smsObjective');
             if (smsObjectives.includes('อื่นๆ')) {
                 const otherText = formData.get('smsObjectiveOther');
                 smsObjectives = smsObjectives.map(obj => obj === 'อื่นๆ' ? `อื่นๆ (${otherText})` : obj);
             }
 
-            // จัดการข้อมูล Checkbox ที่มีช่อง "อื่นๆ" สำหรับ Email
             let emailObjectives = formData.getAll('emailObjective');
             if (emailObjectives.includes('อื่นๆ')) {
                 const otherText = formData.get('emailObjectiveOther');
                 emailObjectives = emailObjectives.map(obj => obj === 'อื่นๆ' ? `อื่นๆ (${otherText})` : obj);
             }
 
-            // จัดการ Radio ที่มีช่อง "อื่นๆ" สำหรับ SMS Service
             let smsServiceVal = formData.get('smsService');
             if (smsServiceVal === 'อื่นๆ') {
                 smsServiceVal = `อื่นๆ (${formData.get('smsServiceOther')})`;
             }
 
-            // เตรียมข้อมูลส่งออก
+            // ⚠️ เพิ่มการจัดการข้อมูลข้อ 4.1 ตรงนี้
+            let impactVal = formData.get('impactDetail');
+            if (impactVal === 'อื่นๆ') {
+                impactVal = `ได้รับผลกระทบ (${formData.get('impactDetailOther')})`;
+            }
+
             const data = {
                 agencyName: formData.get('agencyName') || '',
                 department: formData.get('department') || '',
@@ -212,7 +214,7 @@
                 emailUsage: formData.get('emailUsage') || '',
                 emailObjective: emailObjectives,
                 emailLink: formData.get('emailLink') || '',
-                impactDetail: formData.get('impactDetail') || '',
+                impactDetail: impactVal || '', // เปลี่ยนมาใช้ตัวแปร impactVal
                 suggestion: formData.get('suggestion') || ''
             };
 
@@ -244,3 +246,4 @@
 </body>
 
 </html>
+
